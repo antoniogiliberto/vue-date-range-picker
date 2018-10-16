@@ -1,8 +1,8 @@
 {
-  "name": "@owumaro/vue-date-range-picker",
+  "name": "@antoniogiliberto/vue-date-range-picker",
   "version": "0.0.1",
   "description": "A date range picker",
-  "author": "Owumaro",
+  "author": "Antonio Giliberto",
   "main": "dist/vue-date-range-picker.js",
   "scripts": {
     "dev": "webpack-dev-server --progress --config build/webpack.config.dev.js",
