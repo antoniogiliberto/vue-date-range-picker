@@ -12,7 +12,7 @@ module.exports = merge(base, {
     libraryTarget: 'umd'
   },
   plugins: [
-    new BundleAnalyzerPlugin()
+    //new BundleAnalyzerPlugin()
   ],
   externals: {
     moment: 'moment'

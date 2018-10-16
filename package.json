@@ -6,7 +6,7 @@
   "main": "dist/vue-date-range-picker.js",
   "scripts": {
     "dev": "webpack-dev-server --progress --config build/webpack.config.dev.js",
-    "build": "webpack --progress --config build/webpack.config.prod.js --hide-modules",
+    "build":         "webpack --progress --config build/webpack.config.prod.js --hide-modules",
     "build:browser": "webpack --progress --config build/webpack.config.browser.js --hide-modules"
   },
   "dependencies": {

@@ -13,7 +13,7 @@ module.exports = merge(base, {
     library: 'DateRangePicker'
   },
   plugins: [
-    new BundleAnalyzerPlugin()
+    //new BundleAnalyzerPlugin()
   ],
   externals: {
     moment: 'moment'

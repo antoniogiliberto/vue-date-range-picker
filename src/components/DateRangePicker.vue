@@ -16,6 +16,7 @@
               v-on:goToNextMonth="goToNextMonth"
               v-on:selectDate="selectDate"
               v-on:nextStep="nextStep"
+			  v-on:dayClickNoStep="onDayClickNoStep"
       />
     </div>
 
@@ -160,6 +161,9 @@
             }
         },
         methods: {
+            onDayClickNoStep(){
+                this.step = 'selectStartDate';
+			},
             goToPrevMonth() {
                 this.month = moment.utc(this.month).subtract(1, 'month')
             },
