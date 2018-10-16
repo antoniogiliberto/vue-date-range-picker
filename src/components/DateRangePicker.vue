@@ -146,7 +146,7 @@
                 rangeSelect: null,
                 rangeSelectCompare: null,
                 compare: false,
-                month: moment.utc().subtract(1, 'month').startOf('month'),
+                month: moment.utc().startOf('month'),
                 step: null
             }
         },
@@ -318,7 +318,10 @@
                         this.rangeSelectCompare = 'custom'
                     }
                 }
-            }
+            },
+			startDate(){
+                this.month = moment.utc(this.startDate).startOf('month')
+			}
         },
         filters: {
             dateFormat(value, format) {

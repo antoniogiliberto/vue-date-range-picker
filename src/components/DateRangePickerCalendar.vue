@@ -42,7 +42,7 @@
         },
         computed: {
             displayMonth: function() {
-                return moment.utc(this.month).add(this.calendarIndex - (this.calendarCount - 1), 'month')
+                return moment.utc(this.month).add(this.calendarIndex - (this.calendarCount - 0), 'month')
             },
             days: function() {
                 let startDay = moment.utc(this.displayMonth).startOf('isoWeek')
