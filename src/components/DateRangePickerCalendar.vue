@@ -143,7 +143,7 @@
   }
 
   .col-day {
-    width: 14.28%;
+    width: 14.28571428571429%;
     padding: 0.5rem 0;
     white-space: nowrap;
     cursor: pointer;

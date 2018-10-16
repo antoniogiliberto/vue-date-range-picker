@@ -32,7 +32,7 @@
         <input type="text" class="form-control w-100 daterangepicker-date-input"
                ref="startDate"
                :value="startDate | dateFormat(dateFormatPattern)"
-               @focus="step = 'selectStartDate'" @blur="inputDate"
+
         >
         <span class="mx-2">
         <font-awesome-icon icon="caret-right" fixed-width />
@@ -40,7 +40,7 @@
         <input type="text" class="form-control w-100 daterangepicker-date-input"
                ref="endDate"
                :value="endDate | dateFormat(dateFormatPattern)"
-               @focus="step = 'selectEndDate'" @blur="inputDate"
+
         >
       </div>
       <div class="form-group" v-if="allowCompare">
@@ -60,7 +60,6 @@
           <input type="text" class="form-control w-100 daterangepicker-date-input compare"
                  ref="startDateCompare"
                  :value="startDateCompare | dateFormat(dateFormatPattern)"
-                 @focus="step = 'selectStartDateCompare'" @blur="inputDate"
                  @keyup.enter="inputDate"
           >
           <span class="mx-2">
@@ -69,7 +68,6 @@
           <input type="text" class="form-control w-100 daterangepicker-date-input compare"
                  ref="endDateCompare"
                  :value="endDateCompare | dateFormat(dateFormatPattern)"
-                 @focus="step = 'selectEndDateCompare'" @blur="inputDate"
                  @keyup.enter="inputDate"
           >
         </div>
@@ -191,7 +189,7 @@
                 // Custom range
                 if (!predefinedRange && this.step == null) {
                     this.step = 'selectStartDate'
-                    this.$refs.startDate.focus()
+                    //this.$refs.startDate.focus()
                 }
             },
             selectRangeCompare(rangeKey) {
@@ -215,7 +213,7 @@
                 // Custom range
                 if (!predefinedRange && this.step == null) {
                     this.step = 'selectStartDateCompare'
-                    this.$refs.startDateCompare.focus()
+                    //this.$refs.startDateCompare.focus()
                 }
             },
             selectDate(date){
@@ -233,16 +231,16 @@
             nextStep() {
                 if (this.step == 'selectStartDate') {
                     this.step = 'selectEndDate'
-                    this.$refs.endDate.focus()
+                    //this.$refs.endDate.focus()
                 } else if (this.step == 'selectEndDate') {
                     this.step = null
-                    this.$refs.endDate.blur()
+                    //this.$refs.endDate.blur()
                 } else if (this.step == 'selectStartDateCompare') {
                     this.step = 'selectEndDateCompare'
-                    this.$refs.endDateCompare.focus()
+                    //this.$refs.endDateCompare.focus()
                 } else if (this.step == 'selectEndDateCompare') {
                     this.step = null
-                    this.$refs.endDateCompare.blur()
+                    //this.$refs.endDateCompare.blur()
                 }
             },
             // Try to update the step date from an input value
