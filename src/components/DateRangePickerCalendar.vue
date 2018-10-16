@@ -72,6 +72,9 @@
                 // Class for days between startDate & endDate or is startDate (in case of startDate after endDate)
                 if (day.isBetween(this.startDate, this.endDate, 'days', '[]') || day.isSame(this.startDate)) {
                     classes.push('daterangepicker-range')
+                    this.startDate.startOf('day')
+                    this.endDate.startOf('day')
+                    //console.log(day, this.startDate.startOf('day'), this.endDate.startOf('day'));
                     if(day.isSame(this.startDate)){
                         classes.push('daterangepicker-range-first')
                     }

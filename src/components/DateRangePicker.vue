@@ -102,8 +102,13 @@
                 type: Object,
                 default: () => {
                     return {
+                        today: {
+                            label: 'Today',
+                            startDate: moment.utc().startOf('day'),
+                            endDate: moment.utc().endOf('day')
+                        },
                         lastWeek: {
-                            label: 'LastWeek',
+                            label: 'Last Week',
                             startDate: moment.utc().subtract(1, 'week').startOf('isoWeek'),
                             endDate: moment.utc().subtract(1, 'week').endOf('isoWeek').startOf('day')
                         },
