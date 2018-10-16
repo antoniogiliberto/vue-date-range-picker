@@ -88,7 +88,6 @@
     import moment from 'moment'
 
     fontawesome.library.add(faCaretRight)
-
     export default {
         props: {
             calendarCount: {
@@ -103,6 +102,11 @@
                 type: Object,
                 default: () => {
                     return {
+                        lastWeek: {
+                            label: 'LastWeek',
+                            startDate: moment.utc().subtract(1, 'week').startOf('isoWeek'),
+                            endDate: moment.utc().subtract(1, 'week').endOf('isoWeek').startOf('day')
+                        },
                         currentMonth: {
                             label: 'Current month',
                             startDate: moment.utc().startOf('month'),
