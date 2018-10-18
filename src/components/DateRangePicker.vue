@@ -72,7 +72,7 @@
           >
         </div>
       </div>
-      <div class="form-group form-inline justify-content-end mb-0">
+      <div class="form-group form-inline justify-content-end mb-0 buttons">
         <button type="button" class="btn btn-light" @click="cancel">Cancel</button>
         <button type="button" class="btn btn-primary ml-2" :disabled="step != null" @click="submit">Submit</button>
       </div>
@@ -342,7 +342,7 @@
     }
 </script>
 
-<style>
+<style lang="scss">
   /* Custom row */
   .daterangepicker-row {
     margin: -0.5rem;
@@ -351,6 +351,12 @@
   .daterangepicker-col {
     padding: 0.5rem;
     flex-basis: 100%;
+    position: relative;
+    .buttons {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
   }
 
   /* Make sure that the full date (YYYY-MM-DD) is displayed */
