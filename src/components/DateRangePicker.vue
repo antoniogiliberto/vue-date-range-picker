@@ -121,7 +121,12 @@
                             label: 'Last month',
                             startDate: moment.utc().subtract(1, 'month').startOf('month'),
                             endDate: moment.utc().subtract(1, 'month').endOf('month').startOf('day')
-                        }
+                        },
+                        lastYear: {
+                          label: 'Last year',
+                          startDate: moment.utc().subtract(1, 'year').startOf('year'),
+                          endDate: moment.utc().subtract(1, 'year').endOf('year').startOf('day')
+                        },
                     }
                 }
             },
