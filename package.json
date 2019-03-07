@@ -1,6 +1,6 @@
 {
   "name": "@giliweb/vue-date-range-picker",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A date range picker",
   "author": "Antonio Giliberto",
   "main": "dist/vue-date-range-picker.js",
