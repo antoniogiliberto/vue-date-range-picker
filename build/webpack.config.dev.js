@@ -20,7 +20,6 @@ module.exports = merge(base, {
       errors: true
     },
     quiet: true,
-    writeToDisk: true,
   },
   plugins: [
     new webpack.NamedModulesPlugin(),
