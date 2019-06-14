@@ -1,6 +1,6 @@
 {
   "name": "@giliweb/vue-date-range-picker",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A date range picker",
   "author": "Antonio Giliberto",
   "main": "dist/vue-date-range-picker.js",
@@ -13,6 +13,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@fortawesome/vue-fontawesome": "^0.1.6",
+    "chartjs-color": "^2.3.0",
+    "lodash": "^4.17.11",
     "moment": "^2.24.0"
   },
   "devDependencies": {

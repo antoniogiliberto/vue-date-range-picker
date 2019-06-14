@@ -12,6 +12,9 @@
               :startDateCompare="startDateCompare"
               :endDateCompare="endDateCompare"
               :step="step"
+              :heatMapData="heatMapData"
+              :heatMapDataXName="heatMapDataXName"
+              :heatMapDataYName="heatMapDataYName"
               v-on:goToPrevMonth="goToPrevMonth"
               v-on:goToNextMonth="goToNextMonth"
               v-on:selectDate="selectDate"
@@ -87,6 +90,7 @@
     import { library } from '@fortawesome/fontawesome-svg-core'
     library.add(faCaretLeft, faCaretRight)
     import moment from 'moment'
+
     import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
     export default {
@@ -150,6 +154,35 @@
             timeFormatPattern: {
                 type: String,
                 default: 'hh:mm'
+            },
+            heatMapData: {
+              type: Array,
+              default: () => [
+                {
+                  x: moment().startOf('day').format('YYYY-MM-DD'),
+                  y: 120
+                },
+                {
+                  x: moment().subtract(1, 'day').startOf('day').format('YYYY-MM-DD'),
+                  y: 150
+                },
+                {
+                  x: moment().subtract(3, 'day').startOf('day').format('YYYY-MM-DD'),
+                  y: 110
+                },
+                {
+                  x: moment().subtract(5, 'day').startOf('day').format('YYYY-MM-DD'),
+                  y: 130
+                }
+              ]
+            },
+            heatMapDataXName: {
+              type: String,
+              default: 'x'
+            },
+            heatMapDataYName: {
+              type: String,
+              default: 'y'
             },
         },
         data() {

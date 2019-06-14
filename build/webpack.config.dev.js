@@ -10,7 +10,7 @@ module.exports = merge(base, {
   entry: './demo/main.js',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve('./dist')
   },
   devServer: {
     hot: true,
@@ -19,7 +19,8 @@ module.exports = merge(base, {
       warnings: false,
       errors: true
     },
-    quiet: true
+    quiet: true,
+    writeToDisk: true,
   },
   plugins: [
     new webpack.NamedModulesPlugin(),

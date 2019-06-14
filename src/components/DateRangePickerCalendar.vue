@@ -21,6 +21,7 @@
 
     <div class="d-flex flex-wrap justify-content-between text-center daterangepicker-calendar-row">
       <div v-for="day in days" :key="day.format('M-D')" class="col-day"
+           :style="{backgroundColor: calculateColor(day)}"
            :class="dayClass(day)" @mouseover="dayMouseOver(day)" @mousedown.prevent @click="dayClick(day)">{{ day.format('D') }}</div>
     </div>
   </div>
@@ -30,6 +31,8 @@
   import {faCaretLeft} from '@fortawesome/free-solid-svg-icons/faCaretLeft'
   import {faCaretRight} from '@fortawesome/free-solid-svg-icons/faCaretRight'
   import { library } from '@fortawesome/fontawesome-svg-core'
+  import _ from 'lodash'
+  import Color from 'chartjs-color'
   library.add(faCaretLeft, faCaretRight)
     import moment from 'moment'
     import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -38,7 +41,11 @@
         components: {
         FontAwesomeIcon
       },
-        props: ['calendarIndex', 'calendarCount', 'month', 'startDate', 'endDate', 'compare', 'startDateCompare', 'endDateCompare', 'step'],
+        props: ['calendarIndex', 'calendarCount', 'month', 'startDate', 'endDate', 'compare', 'startDateCompare', 'endDateCompare', 'step',
+          'heatMapData',
+          'heatMapDataXName',
+          'heatMapDataYName',
+        ],
         data: () => {
             return {}
         },
@@ -61,9 +68,32 @@
             },
             daysOfFirstWeek: function() {
                 return this.days.slice(0, 7)
-            }
+            },
+            heatMapMin(){
+              let min = _.minBy(this.heatMapData, this.heatMapDataYName)
+              return min[this.heatMapDataYName]
+            },
+            heatMapMax(){
+              let max = _.maxBy(this.heatMapData, this.heatMapDataYName)
+              return max[this.heatMapDataYName]
+            },
         },
         methods: {
+          calculateColor(day){
+            if(!this.heatMapData || this.heatMapData.length <= 0){
+              return 'transparent'
+            }
+            // console.log(day, this.heatMapMin, this.heatMapMax)
+            // console.log(`looking for `, day.format('YYYY-MM-DD'), this.heatMapData, `field name:`, this.heatMapDataXName)
+            let heatValue = _.find(this.heatMapData, {[this.heatMapDataXName]: day.format('YYYY-MM-DD')})
+            if(!heatValue) return 'transparent'
+            heatValue = heatValue[this.heatMapDataYName]
+            let d = (this.heatMapMax - this.heatMapMin)
+
+            let ratio = (heatValue - this.heatMapMin) / d
+            console.log(d, ratio)
+            return Color().blue(0).green(255 * ratio).red(255 * (1 - ratio)).lighten(.6).hslString()
+          },
             dayClass: function(day) {
                 let classes = []
 
