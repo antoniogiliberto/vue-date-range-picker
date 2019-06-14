@@ -91,7 +91,6 @@
             let d = (this.heatMapMax - this.heatMapMin)
 
             let ratio = (heatValue - this.heatMapMin) / d
-            console.log(d, ratio)
             return Color().blue(0).green(255 * ratio).red(255 * (1 - ratio)).lighten(.6).hslString()
           },
             dayClass: function(day) {
