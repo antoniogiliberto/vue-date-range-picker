@@ -3,7 +3,7 @@
     <div class="d-flex align-items-center">
       <div class="p-1" :class="calendarIndex == 1 ? '' : 'invisible'">
         <button type="button" class="btn btn-sm btn-light" @mousedown.prevent @click="goToPrevMonth">
-          <font-awesome-icon icon="caret-left" fixed-width />
+          <FontAwesomeIcon :icon="['fa', 'caret-left']" fixed-width />
         </button>
       </div>
       <div class="p-1 col text-center">
@@ -11,7 +11,7 @@
       </div>
       <div class="p-1" :class="calendarIndex == calendarCount ? '' : 'invisible'">
         <button type="button" class="btn btn-sm btn-light" @mousedown.prevent @click="goToNextMonth">
-          <font-awesome-icon icon="caret-right" fixed-width />
+          <FontAwesomeIcon :icon="['fa', 'caret-right']" fixed-width />
         </button>
       </div>
     </div>
@@ -27,15 +27,17 @@
 </template>
 
 <script>
-    import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
-    import fontawesome from '@fortawesome/fontawesome'
-    import faCaretLeft from '@fortawesome/fontawesome-free-solid/faCaretLeft'
-    import faCaretRight from '@fortawesome/fontawesome-free-solid/faCaretRight'
+  import {faCaretLeft} from '@fortawesome/free-solid-svg-icons/faCaretLeft'
+  import {faCaretRight} from '@fortawesome/free-solid-svg-icons/faCaretRight'
+  import { library } from '@fortawesome/fontawesome-svg-core'
+  library.add(faCaretLeft, faCaretRight)
     import moment from 'moment'
-
-    fontawesome.library.add(faCaretLeft, faCaretRight)
-
+    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
     export default {
+
+        components: {
+        FontAwesomeIcon
+      },
         props: ['calendarIndex', 'calendarCount', 'month', 'startDate', 'endDate', 'compare', 'startDateCompare', 'endDateCompare', 'step'],
         data: () => {
             return {}
@@ -124,7 +126,6 @@
         },
         watch: {},
         filters: {},
-        components: { FontAwesomeIcon }
     }
 </script>
 

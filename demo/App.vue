@@ -10,9 +10,8 @@
     <h3 class="pb-2 border-bottom">Modal integration</h3>
     <div class="mb-4">
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        <font-awesome-icon icon="calendar-alt" fixed-width />
         {{ startDate | dateFormat }} - {{ endDate | dateFormat }}
-        <font-awesome-icon icon="caret-down" fixed-width />
+
       </button>
 
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -32,12 +31,11 @@
 import 'bootstrap'
 import moment from 'moment'
 import $ from 'jquery'
-import '@fortawesome/fontawesome-free-solid'
-import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
 import DateRangePicker from '../src/components/DateRangePicker'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 export default {
-  components: { DateRangePicker, FontAwesomeIcon },
+  components: { DateRangePicker, 'font-awesome-icon': FontAwesomeIcon },
   data: () => {
     return {
       startDate: moment.utc().subtract(1, 'month').startOf('month'),
@@ -67,7 +65,6 @@ export default {
   }
 }
 </script>
-
 <style>
-@import '~bootstrap/dist/css/bootstrap.min.css';
+  @import '~bootstrap/dist/css/bootstrap.css';
 </style>

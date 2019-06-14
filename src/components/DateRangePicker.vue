@@ -35,7 +35,7 @@
 
         >
         <span class="mx-2">
-        <font-awesome-icon icon="caret-right" fixed-width />
+        <FontAwesomeIcon :icon="['fa', 'caret-right']" fixed-width />
         </span>
         <input type="text" class="form-control w-100 daterangepicker-date-input"
                ref="endDate"
@@ -63,7 +63,7 @@
                  @keyup.enter="inputDate"
           >
           <span class="mx-2">
-          <font-awesome-icon icon="caret-right" fixed-width />
+          <FontAwesomeIcon :icon="['fa', 'caret-right']" fixed-width />
           </span>
           <input type="text" class="form-control w-100 daterangepicker-date-input compare"
                  ref="endDateCompare"
@@ -82,13 +82,18 @@
 
 <script>
     import DateRangePickerCalendar from './DateRangePickerCalendar'
-    import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
-    import fontawesome from '@fortawesome/fontawesome'
-    import faCaretRight from '@fortawesome/fontawesome-free-solid/faCaretRight'
+    import {faCaretLeft} from '@fortawesome/free-solid-svg-icons/faCaretLeft'
+    import {faCaretRight} from '@fortawesome/free-solid-svg-icons/faCaretRight'
+    import { library } from '@fortawesome/fontawesome-svg-core'
+    library.add(faCaretLeft, faCaretRight)
     import moment from 'moment'
+    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-    fontawesome.library.add(faCaretRight)
     export default {
+      components: {
+        DateRangePickerCalendar,
+        FontAwesomeIcon
+      },
         props: {
             calendarCount: {
                 type: Number,
@@ -342,13 +347,11 @@
             // Initialize ranges
             this.rangeSelect = this.defaultRangeSelect
             this.rangeSelectCompare = this.defaultRangeSelectCompare
-        },
-        components: { DateRangePickerCalendar, FontAwesomeIcon }
+        }
     }
 </script>
 
 <style lang="scss">
-  /* Custom row */
   .daterangepicker-row {
     margin: -0.5rem;
   }
