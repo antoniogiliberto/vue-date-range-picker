@@ -69,14 +69,28 @@
             daysOfFirstWeek: function() {
                 return this.days.slice(0, 7)
             },
-            heatMapMin(){
-              let min = _.minBy(this.heatMapData, this.heatMapDataYName)
-              return min[this.heatMapDataYName]
+            heatMapMins(){
+              let heatMapMins = {}
+              _.each(this.heatMapData, (e) => {
+                let month = moment(e[this.heatMapDataXName]).month()
+                let year = moment(e[this.heatMapDataXName]).year()
+                heatMapMins[year] = heatMapMins[year] || {}
+                heatMapMins[year][month] = heatMapMins[year][month] || Infinity
+                heatMapMins[year][month] = Math.min(e[this.heatMapDataYName], heatMapMins[year][month])
+              })
+              return heatMapMins
             },
-            heatMapMax(){
-              let max = _.maxBy(this.heatMapData, this.heatMapDataYName)
-              return max[this.heatMapDataYName]
-            },
+          heatMapMaxs(){
+            let heatMapMaxs = {}
+            _.each(this.heatMapData, (e) => {
+              let month = moment(e[this.heatMapDataXName]).month()
+              let year = moment(e[this.heatMapDataXName]).year()
+              heatMapMaxs[year] = heatMapMaxs[year] || {}
+              heatMapMaxs[year][month] = heatMapMaxs[year][month] || Infinity
+              heatMapMaxs[year][month] = Math.max(e[this.heatMapDataYName], heatMapMaxs[year][month])
+            })
+            return heatMapMaxs
+          },
         },
         methods: {
           calculateColor(day){
@@ -88,9 +102,11 @@
             let heatValue = _.find(this.heatMapData, {[this.heatMapDataXName]: day.format('YYYY-MM-DD')})
             if(!heatValue) return 'transparent'
             heatValue = heatValue[this.heatMapDataYName]
-            let d = (this.heatMapMax - this.heatMapMin)
+            let heatMapMin = this.heatMapMins[day.year()][day.month()]
+            let heatMapMax = this.heatMapMaxs[day.year()][day.month()]
+            let d = (heatMapMax - heatMapMin)
 
-            let ratio = (heatValue - this.heatMapMin) / d
+            let ratio = (heatValue - heatMapMin) / d
             return Color().blue(0).green(255 * ratio).red(255 * (1 - ratio)).lighten(.6).hslString()
           },
             dayClass: function(day) {
